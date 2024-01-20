@@ -21,4 +21,17 @@ public class AuthorImpl implements AuthorService{
         List<Author> authors = authorRepository.findAll();
         return authors.stream().map(author -> modelMapper.map(author, AuthorDto.class)).collect(Collectors.toList());
     }
+
+    @Override
+    public AuthorDto getAuthorByNickname(String nickName) {
+        Author author = authorRepository.getAuthorByNickname(nickName);
+        return (author != null) ? modelMapper.map(author,AuthorDto.class) : null;
+    }
+
+    @Override
+    public AuthorDto createAuthor(AuthorDto authorDto) {
+        Author author = modelMapper.map(authorDto, Author.class);
+        author = authorRepository.save(author);
+        return modelMapper.map(author, AuthorDto.class);
+    }
 }
