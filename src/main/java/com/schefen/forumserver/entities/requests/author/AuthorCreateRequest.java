@@ -1,9 +1,9 @@
-package com.schefen.forumserver.entities.dtos;
+package com.schefen.forumserver.entities.requests.author;
 
 import lombok.Data;
 
 @Data
-public class AuthorDto {
+public class AuthorCreateRequest {
     private String authorFirstName;
     private String authorLastName;
     private String authorNickName;

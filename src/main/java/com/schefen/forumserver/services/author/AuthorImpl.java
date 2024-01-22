@@ -1,12 +1,15 @@
 package com.schefen.forumserver.services.author;
 import com.schefen.forumserver.entities.Author;
 import com.schefen.forumserver.entities.dtos.AuthorDto;
+import com.schefen.forumserver.entities.requests.author.AuthorCreateRequest;
+import com.schefen.forumserver.entities.requests.author.AuthorUpdateRequest;
 import com.schefen.forumserver.repositories.AuthorRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,9 +32,30 @@ public class AuthorImpl implements AuthorService{
     }
 
     @Override
-    public AuthorDto createAuthor(AuthorDto authorDto) {
-        Author author = modelMapper.map(authorDto, Author.class);
+    public AuthorDto createAuthor(AuthorCreateRequest createRequest) {
+        Author author = modelMapper.map(createRequest, Author.class);
         author = authorRepository.save(author);
         return modelMapper.map(author, AuthorDto.class);
+    }
+
+    @Override
+    public void updateAuthor(AuthorUpdateRequest updateRequest) throws Exception {
+        Optional<Author> author = authorRepository.findById(updateRequest.getAuthorId());
+        if (author.isPresent()){
+            Author existingAuthor = author.get();
+            existingAuthor.setAuthorFirstName(updateRequest.getAuthorFirstName());
+            existingAuthor.setAuthorLastName(updateRequest.getAuthorLastName());
+            existingAuthor.setAuthorAge(updateRequest.getAuthorAge());
+            existingAuthor.setAuthorEmail(updateRequest.getAuthorEmail());
+            existingAuthor.setAuthorPhoneNumber(updateRequest.getAuthorPhoneNumber());
+            existingAuthor.setAuthorImage(updateRequest.getAuthorImage());
+            authorRepository.save(existingAuthor);
+        }
+        else throw new Exception("Hata");
+    }
+
+    @Override
+    public void deleteAuthor(long id) {
+        authorRepository.deleteById(id);
     }
 }
