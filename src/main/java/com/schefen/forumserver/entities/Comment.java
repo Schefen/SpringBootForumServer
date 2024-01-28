@@ -1,6 +1,6 @@
 package com.schefen.forumserver.entities;
 
-import com.schefen.forumserver.entities.baseEntity.BaseEntity;
+import com.schefen.forumserver.entities.jwt.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Table(name="comments")
 @EqualsAndHashCode(callSuper = false)
 public class Comment extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +23,8 @@ public class Comment extends BaseEntity {
     private String commentItself;
 
     @ManyToOne
-    @JoinColumn(name= "author_id")
-    private Author author;
+    @JoinColumn(name= "user_id")
+    private User user;
 
     @ManyToOne
     @JoinColumn(name= "content_id")

@@ -1,6 +1,6 @@
 package com.schefen.forumserver.entities;
 
-import com.schefen.forumserver.entities.baseEntity.BaseEntity;
+import com.schefen.forumserver.entities.jwt.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Table(name="contents")
 @EqualsAndHashCode(callSuper = false)
 public class Content extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +26,8 @@ public class Content extends BaseEntity {
     private String contentItself;
 
     @ManyToOne
-    @JoinColumn(name = "author_id", referencedColumnName = "authorId")
-    private Author author;
+    @JoinColumn(name = "user_id", referencedColumnName = "userId")
+    private User user;
 
     @ManyToMany     //One content can have several category
     @JoinTable(

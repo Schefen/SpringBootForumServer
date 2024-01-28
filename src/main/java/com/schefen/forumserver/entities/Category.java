@@ -1,6 +1,5 @@
 package com.schefen.forumserver.entities;
 
-import com.schefen.forumserver.entities.baseEntity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Table(name="categories")
 @EqualsAndHashCode(callSuper = false)
 
 public class Category extends BaseEntity {

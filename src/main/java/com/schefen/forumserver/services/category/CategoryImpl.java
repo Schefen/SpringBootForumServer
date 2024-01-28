@@ -1,15 +1,12 @@
 package com.schefen.forumserver.services.category;
 
 import com.schefen.forumserver.entities.Category;
-import com.schefen.forumserver.entities.dtos.AuthorDto;
 import com.schefen.forumserver.entities.dtos.CategoryDto;
 import com.schefen.forumserver.entities.requests.category.CategoryCreateRequest;
 import com.schefen.forumserver.entities.requests.category.CategoryUpdateRequest;
 import com.schefen.forumserver.repositories.CategoryRepository;
-import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

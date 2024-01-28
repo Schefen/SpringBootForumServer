@@ -1,4 +1,4 @@
-package com.schefen.forumserver.webApis.controllers.category;
+package com.schefen.forumserver.controllers;
 
 import com.schefen.forumserver.entities.dtos.CategoryDto;
 import com.schefen.forumserver.entities.requests.category.CategoryCreateRequest;
