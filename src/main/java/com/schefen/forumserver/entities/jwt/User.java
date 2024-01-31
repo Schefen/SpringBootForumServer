@@ -1,5 +1,6 @@
 package com.schefen.forumserver.entities.jwt;
 
+import com.schefen.forumserver.aspect.UserRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,6 +33,7 @@ public class User implements UserDetails {
     private String username;
     @Column(unique = true,nullable = false)
     private String email;
+
     @Column(nullable = false)
     private String password;
 
@@ -41,14 +43,10 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
-
-    private boolean isEnabled = true;
-
     private boolean isAccountNonExpired = true;
-
     private boolean isAccountNonLocked = true;
-
     private boolean isCredentialsNonExpired = true;
+    private boolean isEnabled = true;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -56,31 +54,31 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return email;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return isAccountNonExpired;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return isAccountNonLocked;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return isCredentialsNonExpired;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return isEnabled;
     }
 }

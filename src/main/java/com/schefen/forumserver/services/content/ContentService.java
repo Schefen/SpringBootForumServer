@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface ContentService {
     Page<ContentDto> getAllContents(Pageable pageable);
+    ContentDto findByContentName(String contentName);
+
 }

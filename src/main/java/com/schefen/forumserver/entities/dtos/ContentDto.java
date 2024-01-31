@@ -16,6 +16,6 @@ public class ContentDto {
     private LocalDate createdDate;
     private String contentHeader;
     private String contentItself;
-    private long authorId;
+    private long userId;
     private Set<Long> categoryIds;
 }

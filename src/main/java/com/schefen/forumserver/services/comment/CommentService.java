@@ -1,6 +1,8 @@
 package com.schefen.forumserver.services.comment;
 
+import com.schefen.forumserver.controllers.reqres.CommentCreateResponse;
 import com.schefen.forumserver.entities.dtos.CommentDto;
+import com.schefen.forumserver.entities.dtos.UserDto;
 import com.schefen.forumserver.entities.requests.comment.CommentCreateRequest;
 import com.schefen.forumserver.entities.requests.comment.CommentUpdateRequest;
 
@@ -10,7 +12,7 @@ public interface CommentService {
 
     List<CommentDto> getAll();
     List<CommentDto> getCommentByContainsX(String x);
-    CommentDto addComment(CommentCreateRequest createRequest);
+    CommentDto addComment(CommentCreateRequest createRequest) throws Exception;
     void editComment(CommentUpdateRequest updateRequest) throws Exception;
     void deleteComment(long id);
 }

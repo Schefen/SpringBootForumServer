@@ -1,9 +1,9 @@
-package com.schefen.forumserver.entities.requests.comment;
+package com.schefen.forumserver.controllers.reqres;
 
 import lombok.Data;
 
 @Data
-public class CommentCreateRequest {
+public class CommentCreateResponse {
     private String commentItself;
     private String authorUsername;
     private String authorEmail;

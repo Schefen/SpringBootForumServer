@@ -9,8 +9,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -54,12 +56,16 @@ public class JwtService {
             Map<String, Object> extraClaims,
             UserDetails userDetails
     ) {
+        Date now = new Date(); // Şu anki zamanı al
+        long expirationTimeInMillis = now.getTime() + 5000 * 1000; // 5000 saniye ekleyerek geçerlilik süresini belirle
+        Date expirationDate = new Date(expirationTimeInMillis); // Geçerlilik süresi olarak kullanılacak tarihi oluştur
+
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 25 * 1000))
+                .setIssuedAt(now)
+                .setExpiration(expirationDate)
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
