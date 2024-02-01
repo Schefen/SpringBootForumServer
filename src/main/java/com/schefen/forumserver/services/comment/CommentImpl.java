@@ -1,6 +1,5 @@
 package com.schefen.forumserver.services.comment;
 
-import com.schefen.forumserver.controllers.reqres.CommentCreateResponse;
 import com.schefen.forumserver.entities.Comment;
 import com.schefen.forumserver.entities.Content;
 import com.schefen.forumserver.entities.dtos.CommentDto;
@@ -10,10 +9,7 @@ import com.schefen.forumserver.entities.jwt.User;
 import com.schefen.forumserver.entities.requests.comment.CommentCreateRequest;
 import com.schefen.forumserver.entities.requests.comment.CommentUpdateRequest;
 import com.schefen.forumserver.repositories.CommentRepository;
-import com.schefen.forumserver.repositories.ContentRepository;
-import com.schefen.forumserver.repositories.JWT.UserRepository;
 import com.schefen.forumserver.services.content.ContentService;
-import com.schefen.forumserver.services.jwt.AuthService;
 import com.schefen.forumserver.services.user.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

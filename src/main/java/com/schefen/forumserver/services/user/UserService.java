@@ -1,6 +1,5 @@
 package com.schefen.forumserver.services.user;
 
-import com.schefen.forumserver.controllers.reqres.CommentCreateResponse;
 import com.schefen.forumserver.entities.dtos.UserDto;
 
 public interface UserService {

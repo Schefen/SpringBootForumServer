@@ -1,14 +1,10 @@
 package com.schefen.forumserver.controllers;
 
 import com.schefen.forumserver.aspect.Authorize;
-import com.schefen.forumserver.controllers.reqres.CommentCreateResponse;
-import com.schefen.forumserver.entities.Comment;
 import com.schefen.forumserver.entities.dtos.CommentDto;
-import com.schefen.forumserver.entities.dtos.UserDto;
 import com.schefen.forumserver.entities.requests.comment.CommentCreateRequest;
 import com.schefen.forumserver.entities.requests.comment.CommentUpdateRequest;
 import com.schefen.forumserver.services.comment.CommentService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
